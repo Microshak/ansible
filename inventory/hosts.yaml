@@ -1,0 +1,8 @@
+K8s:
+  hosts:
+    micros22:
+      ansible_port: 2222
+      ansible_host: micros
+    micros33:
+      ansible_port: 2233
+      ansible_host: micros
