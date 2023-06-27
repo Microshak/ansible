@@ -25,11 +25,15 @@ sudo ufw status
 
 
 # Test
-ansible -i ./inventory/hosts ubuntu -m ping --user microshak --ask-pass
+ansible all -m ping
 
+
+# Shell
+```
+ansible master -m shell "lsb_release -a"
+```
 
 ## Run a playbook
 ```ansible
-ansible-playbook ./playbooks/apt.yaml --user microshak --ask-pass --ask-become-pass -i ./inventory/hosts
-
+ansible-playbook ./playbooks/apt.yaml 
 ```

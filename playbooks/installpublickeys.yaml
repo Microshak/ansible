@@ -1,0 +1,15 @@
+- hosts: "*"
+  become: yes
+  tasks: 
+    - name: insatll public keys
+      ansible.posix.authorized_key:
+        user: microshak
+        state: present
+        key: "{{ lookup('file', '~/.ssh/ansible_id_rsa.pub') }}"
+    - name: Validate the sudoers file before saving
+      lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: '^%sudo'
+        line: '%sudo   ALL=(ALL) NOPASSWD: ALL'
+        validate: /usr/sbin/visudo -cf %s

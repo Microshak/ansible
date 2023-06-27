@@ -1,0 +1,14 @@
+- hosts: "*"
+  become: yes
+  tasks: 
+    - name: apt
+      apt:
+        update_cache: yes
+        upgrade: 'yes'
+- hosts: "master"
+  become: yes
+  tasks: 
+    - name: apt
+      apt:
+        update_cache: yes
+        upgrade: 'yes'
